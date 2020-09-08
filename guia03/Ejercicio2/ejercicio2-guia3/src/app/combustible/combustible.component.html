@@ -1,0 +1,60 @@
+
+
+
+
+
+
+<div class="row">
+    <!--form Compra-->
+    <div class="col-md-10 align-self-center">
+        <div class="card car-body">
+            <h5 class="card-title text-center mt-3">Realiza tu compra</h5> <hr>
+            <div class="row text-center mt-1">
+                <div class="col-md-6">
+                    <label class="mr-2"><b>Seleccione el tipo de combustible:</b></label>
+                    <select  name="selectCombustible" required [(ngModel)]="opcion" (change)="calcularTotal()">
+                            <option [value]="item" *ngFor="let item of listaCombustibles">{{item}}</option>
+                    </select>
+                </div>
+            
+                <div class="col-md-3">
+                        <label class="mr-2"><b>Galones:</b></label>
+                        <input type="number" value="0.05" min="0.05" step="0.05" max="150"  required [(ngModel)]="cantGalones" (change)="calcularTotal()">
+                </div>
+        
+                <div class="col-md-3">
+                    <label class="mr-2"><b>Precio galón:</b></label>
+                    <label>${{ costo }}</label>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    
+    <!--ticket-->
+    <div class="col-md-2">
+        <div class="card car-body" style="width:164px">
+    
+            <div class="text-justify ml-1">
+                <h5 class="card-title text-center mt-2">Ticket</h5> <hr>
+                <div class="mt-2">
+                    <label class="mr-1">Combustible:</label>
+                    <label>{{ opcion }}</label>
+                </div>
+                <div class="mt-2">
+                    <label class="mr-2">Galones:</label>
+                    <label>{{ cantGalones }}</label>
+                </div>
+                <div class="mt-2">
+                    <label class="mr-2">Precio galón:</label>
+                    <label>${{ costo }}</label>
+                </div>
+                <div class="mt-2 text-center">
+                    <label class="mr-2"><b>Total:</b></label>
+                    <label><b>${{ total.toFixed(2) }}</b></label>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+</div>
