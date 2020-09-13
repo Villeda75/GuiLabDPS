@@ -1,0 +1,67 @@
+<div id="RegistroEmpleado" class="card card-body">
+
+    <div class="text-center">
+      <h3>Deducciones salariales</h3> <hr>
+</div>
+
+<div class="form">
+  
+    <!--Datos del empleado-->
+    <div class="row pt-2">
+        <div class="col-md-6">
+          <input type="text" class="form-control" [(ngModel)]="nombres" placeholder="Nombres" required>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" [(ngModel)]="apellidos" placeholder="Apellidos" required> 
+        </div>
+    </div>
+          
+    <div class="row pt-3">
+      <div class="col-md-6">
+            <label for="SalarioBruto">Salario Bruto:</label>
+            <input type="number" class="form-control" [(ngModel)]="SalarioBruto" placeholder="Salario Bruto" required>
+        
+      </div>
+    </div>
+
+    <div class="row pt-3 d-flex justify-content-around">
+        <div class="col-md-3">
+            <button class="btn btn-success btn-block" (click)="ingresarEmpleado()">Calcular</button>
+        </div>
+    </div>
+
+  <!--Datos del empleado-->
+</div>
+
+  </div>
+   <br/><br/>
+
+   
+   <div id="registrosDiarios" *ngIf="registro.length>=1">
+    <h3 class="text-center">Salario Neto de empleados</h3> <hr>
+    <table class="table table-striped table-hover">
+     <thead>
+     <tr>
+     <th>Nombres</th>
+     <th>Apellidos</th>
+     <th>Salario Bruto</th>
+     <th>Descuento ISSS</th>
+     <th>Descuento Renta</th>
+     <th>Descuento AFP</th>
+     <th>Salario Neto</th>
+     </tr>
+     </thead>
+     
+     <tbody>
+     <tr *ngFor="let templeado of registro">
+     <td>{{templeado.nombres}}</td>
+     <td>{{templeado.apellidos}}</td>
+     <td>$ {{templeado.SalarioBruto.toFixed(2)}}</td>
+     <td>$ {{templeado.DescuentoISSS.toFixed(2)}}</td>
+     <td>$ {{templeado.DescuentoRenta.toFixed(2)}}</td>
+     <td>$ {{templeado.DescuentoAFP.toFixed(2)}}</td>
+     <td>$ {{templeado.SalarioNeto.toFixed(2)}}</td>
+     </tr>
+     </tbody>
+    </table>
+   </div>
