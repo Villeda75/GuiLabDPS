@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD AngularPHP</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="bg-dark"> 
+
+
+  <!-- CRUD ANGULAR PHP Y MYSQL -->
+  <div class="container mt-3">
+    <h2 class="text-white">CRUD ANGULAR PHP Y MYSQL</h2>
+    <div class="col-md-10 mt-4 btn-danger p-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="container">
+            <h2 class="text-dark text-center">Administración de artículos</h2>
+            <table class="table tablehover" *ngIf="hayRegistros(); else sinarticulos">
+              <thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Descripcion</th>
+                  <th>Precio</th>
+                  <th>Fabricante</th>
+                  <th>Proveedor</th>
+                  <th>Borrar</th>
+                  <th>Seleccionar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let art of articulos">
+                  <td>{{art.codigo}}</td>
+                  <td>{{art.descripcion}}</td>
+                  <td>{{art.precio}}</td>
+                  <td>{{art.fabricante}}</td>
+                  <td>{{art.proveedor}}</td>
+                  <td><button (click)="baja(art.codigo)" class="btn btn-danger">Borrar</button></td>
+                  <td><button (click)="seleccionar(art.codigo)" class="btn btn-warning">Seleccionar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ng-template #sinarticulos>
+            <p>No hay articulos.</p>
+          </ng-template>
+          <div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.descripcion" placeholder="descripcion" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="number" [(ngModel)]="art.precio" placeholder="precio" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.fabricante" placeholder="fabricante" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.proveedor" placeholder="proveedor" class="form-control" />
+            </div>
+            <button (click)="alta()" *ngIf="art.codigo == 0" class="btn btn-primary btn-space">Agregar</button>
+            <button (click)="modificacion()" *ngIf="art.codigo !== 0" class="btn btn-warning">Modificar</button>
+          </div>
+        </div>
+      </div>
+    </div> <br>
+  </div>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
