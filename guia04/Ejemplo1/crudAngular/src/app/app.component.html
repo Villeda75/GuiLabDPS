@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto038</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  
+  
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">
+      Primer Crud Angular
+    </a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+
+        <ul class="list-group">
+
+          <li *ngFor="let alumno of alumnoArray" class="list-group-item list-group-item-action" (click)="openForEdit(alumno)" [class.active]="alumno == selectedAlumno">
+            <span class="badge badge-primary">{{alumno.id}}</span>
+            - {{alumno.name}}
+            - {{alumno.lastname}}
+            - {{alumno.age}}
+            - {{alumno.direccion}}
+            - {{alumno.telefono}}
+            - {{alumno.correo}}
+          </li>
+        </ul>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h3>{{selectedAlumno.id == 0 ? "Agregar Nuevo Alumno" : "Actualizar Alumno"}}</h3>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.name" placeholder="name" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.lastname" placeholder="lastname" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" [(ngModel)]="selectedAlumno.age" placeholder="age" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.direccion" placeholder="direccion" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" [(ngModel)]="selectedAlumno.telefono" placeholder="telefono" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.correo" placeholder="correo" class="form-control">
+            </div>
+            <button (click)="addOrEdit()" class="btn btn-primary btn-space">
+              Guardar
+            </button>
+            <button *ngIf="selectedAlumno.id !== 0" class="btn btn-danger" (click)="delete()">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciI
+          HZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuO
+          SA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBma
+          WxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzM
+          HoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxM
+          S43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwL
+          jl6IiAvPgogIDwvc3ZnPg==">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    .btn-space {
+      margin-right: 20px;
+    }
+  </style>
+
+</body>
+
+</html>
